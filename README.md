@@ -2,7 +2,7 @@
 
 Official developer toolkit for [TideLink](https://tidelink.app) — an **OpenAI-compatible API gateway** to China's best LLMs (GLM, Qwen, DeepSeek, Hunyuan, Doubao) with automatic failover.
 
-> 🌐 **Website: https://tidelink.app** &nbsp;·&nbsp; [Get a free API key](https://tidelink.app/dashboard.html) &nbsp;·&nbsp; [Live stats](https://tidelink.app/stats/)
+> 🌐 **Website: https://tidelink.app** &nbsp;·&nbsp; [📘 API docs](https://tidelink.app/docs/) &nbsp;·&nbsp; [Get a free API key](https://tidelink.app/dashboard.html) &nbsp;·&nbsp; [Live stats](https://tidelink.app/stats/)
 
 > One endpoint. Every model. No vendor lock-in.
 
