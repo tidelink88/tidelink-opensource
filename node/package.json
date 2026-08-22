@@ -1,0 +1,13 @@
+{
+  "name": "tidelink-sdk",
+  "version": "0.1.0",
+  "description": "Tiny client for TideLink — OpenAI-compatible API gateway to China's best LLMs.",
+  "main": "tidelink.js",
+  "type": "commonjs",
+  "keywords": ["openai", "llm", "gateway", "glm", "qwen", "deepseek", "api"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tidelink-app/tidelink-sdk"
+  }
+}
