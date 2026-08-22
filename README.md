@@ -2,6 +2,8 @@
 
 Official developer toolkit for [TideLink](https://tidelink.app) — an **OpenAI-compatible API gateway** to China's best LLMs (GLM, Qwen, DeepSeek, Hunyuan, Doubao) with automatic failover.
 
+> 🌐 **Website: https://tidelink.app** &nbsp;·&nbsp; [Get a free API key](https://tidelink.app/dashboard.html) &nbsp;·&nbsp; [Live stats](https://tidelink.app/stats/)
+
 > One endpoint. Every model. No vendor lock-in.
 
 TideLink speaks the OpenAI protocol, so in most cases you don't need this SDK at all — just point your existing OpenAI client at `https://tidelink.app/v1`. This repo exists for three reasons:
@@ -63,9 +65,14 @@ See [MIGRATION.md](./MIGRATION.md) for Cursor, Claude Code, Cline, Continue, Dif
 
 ## Docs
 
+- **Website & dashboard: https://tidelink.app**
 - API Reference & Quickstart: https://tidelink.app/docs/
 - Integrations: https://tidelink.app/docs/integrations.html
 - Live stats: https://tidelink.app/stats/
+
+## Star & contribute
+
+If TideLink saves you a provider key, give the repo a ⭐ and the [website](https://tidelink.app) a visit. PRs and issues are welcome — this toolkit is meant to be extended by the community.
 
 ## License
 
