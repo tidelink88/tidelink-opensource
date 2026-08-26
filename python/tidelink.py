@@ -1,8 +1,8 @@
 """TideLink — tiny zero-dependency client for the OpenAI-compatible gateway.
 
-TideLink (https://tidelink.app) is an OpenAI-compatible API gateway to China's
+TideLink (https://tidelink.xyz) is an OpenAI-compatible API gateway to China's
 best LLMs with automatic failover. If you already use the official `openai`
-package, you don't need this file — just set base_url="https://tidelink.app/v1".
+package, you don't need this file — just set base_url="https://tidelink.xyz/v1".
 This module is for when you want a minimal requests-based client without the
 heavier SDK.
 
@@ -12,7 +12,7 @@ available backend, so any placeholder (e.g. "glm-4-flash") works.
 
 import requests
 
-DEFAULT_BASE = "https://tidelink.app/v1"
+DEFAULT_BASE = "https://tidelink.xyz/v1"
 
 
 class TideLinkError(Exception):

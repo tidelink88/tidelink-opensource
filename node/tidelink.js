@@ -1,9 +1,9 @@
 // TideLink — tiny zero-dependency Node client for the OpenAI-compatible gateway.
-// https://tidelink.app  ·  base_url: https://tidelink.app/v1
+// https://tidelink.xyz  ·  base_url: https://tidelink.xyz/v1
 // The `model` field is treated as compatible; TideLink auto-selects the best
 // available backend and fails over across providers.
 
-const DEFAULT_BASE = 'https://tidelink.app/v1';
+const DEFAULT_BASE = 'https://tidelink.xyz/v1';
 
 class TideLink {
   constructor(apiKey, baseUrl = DEFAULT_BASE) {

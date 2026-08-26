@@ -1,12 +1,12 @@
 # TideLink SDK & Drop-in Helper
 
-Official developer toolkit for [TideLink](https://tidelink.app) — an **OpenAI-compatible API gateway** to China's best LLMs (GLM, Qwen, DeepSeek, Hunyuan, Doubao) with automatic failover.
+Official developer toolkit for [TideLink](https://tidelink.xyz) — an **OpenAI-compatible API gateway** to China's best LLMs (GLM, Qwen, DeepSeek, Hunyuan, Doubao) with automatic failover.
 
-> 🌐 **Website: https://tidelink.app** &nbsp;·&nbsp; [📘 API docs](https://tidelink.app/docs/) &nbsp;·&nbsp; [Get a free API key](https://tidelink.app/dashboard.html) &nbsp;·&nbsp; [Live stats](https://tidelink.app/stats/)
+> 🌐 **Website: https://tidelink.xyz** &nbsp;·&nbsp; [📘 API docs](https://tidelink.xyz/docs/) &nbsp;·&nbsp; [Get a free API key](https://tidelink.xyz/dashboard.html) &nbsp;·&nbsp; [Live stats](https://tidelink.xyz/stats/)
 
 > One endpoint. Every model. No vendor lock-in.
 
-TideLink speaks the OpenAI protocol, so in most cases you don't need this SDK at all — just point your existing OpenAI client at `https://tidelink.app/v1`. This repo exists for three reasons:
+TideLink speaks the OpenAI protocol, so in most cases you don't need this SDK at all — just point your existing OpenAI client at `https://tidelink.xyz/v1`. This repo exists for three reasons:
 1. A tiny zero-dependency client when you don't want to pull in the `openai` package.
 2. Copy-paste **migration snippets** from OpenAI / other gateways.
 3. A reference the community can extend (PRs welcome).
@@ -24,8 +24,8 @@ npm install                 # node
 from openai import OpenAI
 
 client = OpenAI(
-    base_url="https://tidelink.app/v1",
-    api_key="sk_你的TideLink密钥",   # get one free at https://tidelink.app/dashboard.html
+    base_url="https://tidelink.xyz/v1",
+    api_key="sk_你的TideLink密钥",   # get one free at https://tidelink.xyz/dashboard.html
 )
 
 resp = client.chat.completions.create(
@@ -57,7 +57,7 @@ tl.chat([{ role: 'user', content: 'Hi' }]).then(r => console.log(r.choices[0].me
 
 ## Migrate from OpenAI
 
-1. Change `base_url` / `OPENAI_BASE_URL` to `https://tidelink.app/v1`.
+1. Change `base_url` / `OPENAI_BASE_URL` to `https://tidelink.xyz/v1`.
 2. Replace your OpenAI key with your TideLink key.
 3. (Optional) set `model` to any placeholder like `glm-4-flash` — TideLink routes automatically.
 
@@ -65,14 +65,14 @@ See [MIGRATION.md](./MIGRATION.md) for Cursor, Claude Code, Cline, Continue, Dif
 
 ## Docs
 
-- **Website & dashboard: https://tidelink.app**
-- API Reference & Quickstart: https://tidelink.app/docs/
-- Integrations: https://tidelink.app/docs/integrations.html
-- Live stats: https://tidelink.app/stats/
+- **Website & dashboard: https://tidelink.xyz**
+- API Reference & Quickstart: https://tidelink.xyz/docs/
+- Integrations: https://tidelink.xyz/docs/integrations.html
+- Live stats: https://tidelink.xyz/stats/
 
 ## Star & contribute
 
-If TideLink saves you a provider key, give the repo a ⭐ and the [website](https://tidelink.app) a visit. PRs and issues are welcome — this toolkit is meant to be extended by the community.
+If TideLink saves you a provider key, give the repo a ⭐ and the [website](https://tidelink.xyz) a visit. PRs and issues are welcome — this toolkit is meant to be extended by the community.
 
 ## License
 
