@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tidelink"
+version = "0.1.0"
+description = "Tiny zero-dependency client for the TideLink OpenAI-compatible LLM gateway (China's best LLMs: GLM, Qwen, DeepSeek, Hunyuan, Doubao) with automatic failover."
+readme = "README.md"
+requires-python = ">=3.7"
+license = { text = "MIT" }
+dependencies = ["requests>=2.20"]
+keywords = ["llm", "openai", "gateway", "failover", "glm", "qwen", "deepseek", "hunyuan", "doubao", "api"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://tidelink.xyz"
+Repository = "https://github.com/tidelink88/tidelink-opensource"
+
+[tool.setuptools]
+py_modules = ["tidelink", "cli"]

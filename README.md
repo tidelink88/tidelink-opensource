@@ -77,3 +77,27 @@ If TideLink saves you a provider key, give the repo a ⭐ and the [website](http
 ## License
 
 MIT — see [LICENSE](./LICENSE).
+---
+
+## 📦 Install the Python client
+
+You can install the bundled zero-dependency client straight from this repo:
+
+```bash
+pip install "git+https://github.com/tidelink88/tidelink-opensource.git#subdirectory=python"
+```
+
+Then `import tidelink` / `from tidelink import TideLink` works exactly as in the examples above. A `tidelink-cli` command is also installed for quick terminal chats:
+
+```bash
+export TIDELINK_API_KEY=YOUR_KEY
+tidelink-cli "Explain failover in one sentence."
+```
+
+## ⭐ Why a star helps
+
+This repo is the fastest way to point your existing OpenAI code at China's best
+LLMs with automatic failover. If it saves you a key or two, a star helps other
+developers find it — and tells us which examples to build next.
+
+👉 **Get a free API key:** https://tidelink.xyz/dashboard.html
