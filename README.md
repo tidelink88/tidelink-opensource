@@ -1,103 +1,129 @@
-# TideLink SDK & Drop-in Helper
+# 🌊 TideLink
 
-Official developer toolkit for [TideLink](https://tidelink.xyz) — an **OpenAI-compatible API gateway** to China's best LLMs (GLM, Qwen, DeepSeek, Hunyuan, Doubao) with automatic failover.
+> **One API key. Every Chinese LLM.**
 
-> 🌐 **Website: https://tidelink.xyz** &nbsp;·&nbsp; [📘 API docs](https://tidelink.xyz/docs/) &nbsp;·&nbsp; [Get a free API key](https://tidelink.xyz/dashboard.html) &nbsp;·&nbsp; [Live stats](https://tidelink.xyz/stats/)
+TideLink is an **OpenAI-compatible LLM gateway** that unifies China's best
+large language models — **GLM, Qwen, DeepSeek, Hunyuan, Doubao** — behind a
+single `/v1/chat/completions` endpoint, with **automatic failover** handled on
+the gateway side.
 
-> One endpoint. Every model. No vendor lock-in.
+- 🔌 **Drop-in for OpenAI** — point your existing code at TideLink, keep it as-is.
+- 🔀 **Automatic failover** — if one provider is down, the gateway routes to the next.
+- 🔑 **BYOK-friendly** — bring your own upstream keys; we never touch your upstream bill.
+- 💸 **Free to start** — get a free API key, no credit card required.
 
-TideLink speaks the OpenAI protocol, so in most cases you don't need this SDK at all — just point your existing OpenAI client at `https://tidelink.xyz/v1`. This repo exists for three reasons:
-1. A tiny zero-dependency client when you don't want to pull in the `openai` package.
-2. Copy-paste **migration snippets** from OpenAI / other gateways.
-3. A reference the community can extend (PRs welcome).
+---
+
+## Why TideLink
+
+If you build with Chinese LLMs today, you juggle a handful of vendor SDKs,
+auth schemes, and outage windows. TideLink collapses that into one OpenAI-style
+endpoint:
+
+```python
+# before: per-vendor SDKs, per-vendor error handling
+# after:  one client, one shape
+```
+
+Failover, model routing, and key management live on the gateway. Your code
+stays OpenAI-shaped, so swapping in or out is a one-line change.
+
+---
 
 ## Install
 
-```bash
-pip install requests        # python, only if not using the openai SDK
-npm install                 # node
-```
-
-## 30-second start (OpenAI SDK — recommended)
-
-```python
-from openai import OpenAI
-
-client = OpenAI(
-    base_url="https://tidelink.xyz/v1",
-    api_key="sk_你的TideLink密钥",   # get one free at https://tidelink.xyz/dashboard.html
-)
-
-resp = client.chat.completions.create(
-    model="glm-4-flash",
-    messages=[{"role": "user", "content": "Hello"}],
-)
-print(resp.choices[0].message.content)
-```
-
-That's it. The `model` field is treated as compatible but TideLink auto-selects the best available backend and fails over across providers — you don't manage provider keys.
-
-## Using the bundled thin client
-
-```python
-from tidelink import TideLink
-
-tl = TideLink("sk_你的TideLink密钥")
-out = tl.chat([{"role": "user", "content": "用一句话介绍太原"}], model="glm-4-flash")
-print(out["choices"][0]["message"]["content"])
-```
-
-Node:
-
-```js
-const { TideLink } = require('./tidelink');
-const tl = new TideLink('sk_你的TideLink密钥');
-tl.chat([{ role: 'user', content: 'Hi' }]).then(r => console.log(r.choices[0].message.content));
-```
-
-## Migrate from OpenAI
-
-1. Change `base_url` / `OPENAI_BASE_URL` to `https://tidelink.xyz/v1`.
-2. Replace your OpenAI key with your TideLink key.
-3. (Optional) set `model` to any placeholder like `glm-4-flash` — TideLink routes automatically.
-
-See [MIGRATION.md](./MIGRATION.md) for Cursor, Claude Code, Cline, Continue, Dify, Chatbox and more.
-
-## Docs
-
-- **Website & dashboard: https://tidelink.xyz**
-- API Reference & Quickstart: https://tidelink.xyz/docs/
-- Integrations: https://tidelink.xyz/docs/integrations.html
-- Live stats: https://tidelink.xyz/stats/
-
-## Star & contribute
-
-If TideLink saves you a provider key, give the repo a ⭐ and the [website](https://tidelink.xyz) a visit. PRs and issues are welcome — this toolkit is meant to be extended by the community.
-
-## License
-
-MIT — see [LICENSE](./LICENSE).
----
-
-## 📦 Install the Python client
-
-You can install the bundled zero-dependency client straight from this repo:
+### Python
 
 ```bash
 pip install "git+https://github.com/tidelink88/tidelink-opensource.git#subdirectory=python"
 ```
 
-Then `import tidelink` / `from tidelink import TideLink` works exactly as in the examples above. A `tidelink-cli` command is also installed for quick terminal chats:
+```python
+from tidelink import TideLink
+
+tl = TideLink()  # reads TIDELINK_API_KEY from the environment
+r = tl.chat([{"role": "user", "content": "Explain failover in one sentence."}],
+            model="glm-4-flash")
+print(r["choices"][0]["message"]["content"])
+```
+
+A `tidelink-cli` command is also installed for quick terminal chats:
 
 ```bash
 export TIDELINK_API_KEY=YOUR_KEY
 tidelink-cli "Explain failover in one sentence."
 ```
 
+### Node.js
+
+Zero dependencies — clone and require:
+
+```bash
+git clone https://github.com/tidelink88/tidelink-opensource
+cd tidelink-opensource/node
+# nothing to install — tidelink.js is dependency-free
+```
+
+```js
+const { TideLink } = require('./tidelink.js');
+
+const tl = new TideLink();  // reads TIDELINK_API_KEY
+tl.chat([{ role: 'user', content: 'Explain failover in one sentence.' }],
+        { model: 'glm-4-flash' })
+  .then(r => console.log(r.choices[0].message.content));
+```
+
+*(Once published to npm you'll be able to `npm install tidelink-sdk` and
+`require('tidelink-sdk')` instead.)*
+
+---
+
+## Get a free API key
+
+👉 **https://tidelink.xyz/dashboard.html?cid=gh**
+
+No credit card. Free tier included — enough to ship a prototype today.
+
+---
+
+## Bring your own key (BYOK)
+
+Prefer to use your own upstream provider keys? Register a BYOK key and
+TideLink routes through your account — **you pay your provider directly, we
+never see your upstream bill.** This is the cheapest way to run TideLink at
+scale.
+
+👉 **https://tidelink.xyz/v1/byok/keys?cid=gh**
+
+---
+
+## Available models
+
+`glm-4-flash`, `qwen-plus`, `deepseek-chat`, `hunyuan-pro`, `doubao-pro`, and
+more. See the live list programmatically:
+
+```python
+print([m["id"] for m in tl.models()["data"]])
+```
+
+or hit the public endpoint:
+
+```bash
+curl https://tidelink.xyz/v1/models
+```
+
+---
+
 ## ⭐ Why a star helps
 
-This repo is the fastest way to point your existing OpenAI code at China's best
-LLMs with automatic failover. If it saves you a key or two, a star helps other
-developers find it — and tells us which examples to build next.
+This repo is the fastest way to point your existing OpenAI code at China's
+best LLMs with automatic failover. If it saves you a key or two, a star helps
+other developers find it — and tells us which examples to build next.
 
-👉 **Get a free API key:** https://tidelink.xyz/dashboard.html
+👉 **Get a free API key:** https://tidelink.xyz/dashboard.html?cid=gh
+
+---
+
+## License
+
+[MIT](LICENSE) © 2026 TideLink
