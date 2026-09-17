@@ -80,7 +80,7 @@ tl.chat([{ role: 'user', content: 'Explain failover in one sentence.' }],
 
 ## Get a free API key
 
-👉 **https://tidelink.xyz/dashboard.html**
+👉 **https://tidelink.xyz/dashboard.html?cid=gh**
 
 No credit card. Free tier included — enough to ship a prototype today.
 
@@ -93,7 +93,7 @@ TideLink routes through your account — **you pay your provider directly, we
 never see your upstream bill.** This is the cheapest way to run TideLink at
 scale.
 
-👉 **https://tidelink.xyz/v1/byok/keys**
+👉 **https://tidelink.xyz/v1/byok/keys?cid=gh**
 
 ---
 
@@ -120,7 +120,7 @@ This repo is the fastest way to point your existing OpenAI code at China's
 best LLMs with automatic failover. If it saves you a key or two, a star helps
 other developers find it — and tells us which examples to build next.
 
-👉 **Get a free API key:** https://tidelink.xyz/dashboard.html
+👉 **Get a free API key:** https://tidelink.xyz/dashboard.html?cid=gh
 
 ---
 
